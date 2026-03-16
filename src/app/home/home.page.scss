@@ -44,7 +44,7 @@ ion-content::before {
   width: 100%;
   height: 100%;
   
-  background-image: url("/assets/bg-jungle-BJWEJBUQ.png");
+  background-image: url("assets/bg-jungle.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,6 +52,7 @@ ion-content::before {
   filter: blur(3px);
   transform: scale(1.1);
   z-index: -1;
+  pointer-events: none;
 }
 
 
@@ -181,7 +182,7 @@ ion-content::before {
 
   color: #e0e0e0;
 
-  .feature-car:last-child {
+  .feature-card:last-child {
     grid-column: 1/-1;
     max-width: 400px;
     margin: 0 auto;
@@ -310,3 +311,4 @@ ion-content::before {
   }
 
 }
+

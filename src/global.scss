@@ -2,10 +2,10 @@
  * Ionic Global Styles
  */
 
-/* Ionic Core CSS */
+/* =========================
+   Ionic Core CSS
+   ========================= */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
@@ -19,51 +19,155 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 /* Dark mode */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import url("@ionic/angular/css/palettes/dark.system.css");
 
-
-/* =========================
-   GLOBAL BACKGROUND
-   ========================= */
-
+/
 body {
-
   margin: 0;
-
   font-family: 'SF Pro Display', 'Inter', sans-serif;
+
+  /* Dark jungle background */
   background: #000;
-
-  background-image: url("assets/bg-jungle-BJWEJBUQ.png");
+  background-image: url("assets/bg-jungle.png");
   background-size: cover;
-
   background-position: center;
-
   background-repeat: no-repeat;
-
   background-attachment: fixed;
-
   min-height: 100vh;
 
-  color: #fff;
-
+  /* Default text color */
+  color: #ffffff;
 }
-
 
 /* =========================
    GLASS BASE SETTINGS
    ========================= */
-
 :root {
-
   --glass-border: rgba(255,255,255,0.35);
-
 }
 
-
-/* Ensure Ionic content stays transparent */
-
+/* =========================
+   Make Ionic content transparent
+   ========================= */
 ion-content {
-
   --background: transparent;
+  --overflow: auto;
 
+  color: #ffffff; /* ensure all text inside is white */
+  p, h1, h2, h3, h4, h5, h6, li {
+    color: #ffffff;
+  }
+
+  /* Optional dark overlay for readability */
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3); /* darkens jungle slightly */
+    z-index: -1;
+  }
 }
+
+/* =========================
+   GLASS PANEL / FEATURE CARD
+   ========================= */
+.glass-panel, .feature-card {
+  background: rgba(255, 255, 255, 0.15); /* light glass */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+  border-radius: 20px;
+  padding: 2rem;
+  color: #ffffff; /* ensure text is readable */
+}
+
+/* =========================
+   Headers / Titles / CTA
+   ========================= */
+.glass-title, .glass-subtitle, .cta-button {
+  color: #ffffff !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7); /* subtle glow for visibility */
+}
+
+/* =========================
+   CTA BUTTON
+   ========================= */
+.cta-button {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.35);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  color: #ffffff;
+}
+
+/* =========================
+   Frosted bars (header/footer)
+   ========================= */
+.frosted-bar {
+  margin: 20px auto;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+  text-align: center;
+  max-width: 1100px;
+  color: #ffffff;
+}
+
+/* =========================
+   Floating bubbles
+   ========================= */
+.bubble {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(0.5px);
+  animation: float 25s infinite linear;
+}
+.bubble:nth-child(1) { left: 10%; animation-duration: 18s; }
+.bubble:nth-child(2) { left: 25%; animation-duration: 20s; }
+.bubble:nth-child(3) { left: 40%; animation-duration: 22s; }
+.bubble:nth-child(4) { left: 55%; animation-duration: 24s; }
+.bubble:nth-child(5) { left: 70%; animation-duration: 26s; }
+.bubble:nth-child(6) { left: 85%; animation-duration: 28s; }
+.bubble:nth-child(7) { left: 15%; animation-duration: 23s; }
+.bubble:nth-child(8) { left: 60%; animation-duration: 21s; }
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(-500px); opacity: 0.6; }
+  100% { transform: translateY(-1000px); opacity: 0; }
+}
+
+/* =========================
+   Global background image with blur
+   ========================= */
+ion-content::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("assets/bg-jungle.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.1);
+  z-index: -2;
+  pointer-events: none;
+}
+
