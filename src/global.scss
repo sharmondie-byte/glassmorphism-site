@@ -31,8 +31,9 @@ body {
   margin: 0;
 
   font-family: 'SF Pro Display', 'Inter', sans-serif;
+  background: #000;
 
-  background-image: url("assets/bg-gradient.jpg");
+  background-image: url("assets/bg-jungle.png");
 
   background-size: cover;
 
@@ -43,6 +44,8 @@ body {
   background-attachment: fixed;
 
   min-height: 100vh;
+
+  color: #fff;
 
 }
 
