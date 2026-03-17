@@ -1,7 +1,3 @@
-/*
- * Ionic Global Styles
- */
-
 /* =========================
    Ionic Core CSS
    ========================= */
@@ -18,55 +14,62 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-
+/* =========================
+   Global background + blur
+   ========================= */
 body {
   margin: 0;
   font-family: 'SF Pro Display', 'Inter', sans-serif;
-
-  background: #000; 
-
-  
-
-  color: #ffffff;
-}
-
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
+  background: #000;
   background-image: url("assets/bg-jungle.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  filter: blur(6px);        
-  transform: scale(1.1);    
-
-  z-index: -2;              
-  pointer-events: none;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #ffffff;
 }
 
+/* Glass border variable */
+:root {
+  --glass-border: rgba(255,255,255,0.35);
+}
 
+/* =========================
+   Make Ionic content transparent + scrollable
+   ========================= */
+html, body {
+  height: auto !important;       /* allow content to define height */
+  overflow-y: auto !important;   /* enable vertical scroll */
+}
+
+ion-content {
+  --background: transparent;
+  --overflow: auto;               /* ensure Ionic scroll works */
+}
+
+ion-content::part(scroll) {
+  overflow-y: auto;               /* Vite/Ionic 7 fix for scroll */
+}
+
+/* Background blur behind content */
 ion-content::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: -1;
+  background-image: url("assets/bg-jungle.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px);
+  transform: scale(1.1);
+  z-index: -2;
   pointer-events: none;
 }
 
 /* =========================
-   ION CONTENT (UNCHANGED)
+   Ensure card & panel text stays white
    ========================= */
-ion-content {
-  --background: transparent;
-  color: #ffffff;
-}
-
-/* FORCE TEXT TO STAY WHITE INSIDE GLASS ELEMENTS */
 .glass-panel,
 .feature-card {
   color: #ffffff;
